@@ -19,7 +19,7 @@ public enum FileInputHandler implements InputHandler {
 	 */
 	public void execute(String fileName) throws InvalidInputException {
 		HandlerFactory factory = HandlerFactory.getInputHandlerFactory();
-		ValidatorFactory validatorFactory = ValidatorFactory.getCommandValidatorFactory();
+		ValidatorFactory validatorFactory = ValidatorFactory.getValidatorFactory();
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 			String line = "";
 			while ((line = br.readLine()) != null) {

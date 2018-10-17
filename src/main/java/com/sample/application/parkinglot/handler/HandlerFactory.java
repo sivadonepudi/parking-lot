@@ -44,7 +44,7 @@ public class HandlerFactory {
 		String cmd = inputTokenizer.nextToken();
 		// if the the operation is supported
 		if (commandValidator.test(cmd)) {
-			return CommandInputHandler.INSTANCE;
+			return CommandHandler.INSTANCE;
 		}
 
 		throw new InvalidInputException("Invalid input: " + input);

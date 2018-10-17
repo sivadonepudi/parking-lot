@@ -33,7 +33,7 @@ public class ParkinglotApplication {
 		Scanner inputScanner = new Scanner(System.in);
 		String input = inputScanner.nextLine();
 		HandlerFactory factory = HandlerFactory.getInputHandlerFactory();
-		ValidatorFactory validatorFactory = ValidatorFactory.getCommandValidatorFactory();
+		ValidatorFactory validatorFactory = ValidatorFactory.getValidatorFactory();
 
 		// as long as there is NO exit command
 		while (!exitCommands.contains(input)) {

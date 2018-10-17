@@ -10,7 +10,7 @@ import com.sample.application.parkinglot.Commands;
  * @author sidonepudi
  *
  */
-public class CommandValidatorPredicates {
+public class ValidatorPredicates {
 	public static final Predicate<String> EMPTY_CHECK = s -> s == null || s.isEmpty();
 	public static final Predicate<String> CREATE_PARKING_LOT_CHECK = s -> s
 			.equalsIgnoreCase(Commands.CRAEATE_PARKING_LOT.getValue());

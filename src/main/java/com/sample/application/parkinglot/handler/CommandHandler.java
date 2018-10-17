@@ -17,7 +17,7 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
  * @author sidonepudi
  *
  */
-public enum CommandInputHandler implements InputHandler {
+public enum CommandHandler implements InputHandler {
 	INSTANCE;
 
 	private static Set<Slot> parkingLot = new LinkedHashSet<Slot>();
