@@ -5,6 +5,12 @@ import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
+/**
+ * Validator file based commands
+ * 
+ * @author sidonepudi
+ *
+ */
 public class FileInputValidator implements CommandValidator {
 
 	@Override

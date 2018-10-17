@@ -5,6 +5,12 @@ import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
+/**
+ * Validator for "leave"
+ * 
+ * @author sidonepudi
+ *
+ */
 public class LeaveValidator implements CommandValidator {
 
 	@Override

@@ -6,13 +6,13 @@ import org.junit.Test;
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 import com.sample.application.parkinglot.handler.CommandInputHandler;
 import com.sample.application.parkinglot.handler.FileInputHandler;
-import com.sample.application.parkinglot.handler.InputHandlerFactory;
+import com.sample.application.parkinglot.handler.HandlerFactory;
 
-public class InputHandlerFactoryTest {
+public class HandlerFactoryTest {
 
 	@Test
 	public void testCreateInputHandler() {
-		InputHandlerFactory factory = new InputHandlerFactory();
+		HandlerFactory factory = HandlerFactory.getInputHandlerFactory();
 		try {
 			Assert.assertEquals(FileInputHandler.class, factory.createInputHandler("inputFile.txt").getClass());
 			Assert.assertEquals(CommandInputHandler.class,

@@ -5,6 +5,13 @@ import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
+/**
+ * Validator for "slot_number_for_registration_number"
+ * slot_number_for_registration_number <registration number>
+ * 
+ * @author sidonepudi
+ *
+ */
 public class SlotNumbersWithRegistrationNumberValidator implements CommandValidator {
 
 	@Override

@@ -5,6 +5,12 @@ import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
+/**
+ * Validator for "status"
+ * 
+ * @author sidonepudi
+ *
+ */
 public class StatusValidator implements CommandValidator {
 
 	@Override

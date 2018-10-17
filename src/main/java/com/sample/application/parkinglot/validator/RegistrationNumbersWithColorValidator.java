@@ -5,6 +5,13 @@ import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
+/**
+ * Validator for "registration_numbers_for_cars_with_colour"
+ * registration_numbers_for_cars_with_colour <color>
+ * 
+ * @author sidonepudi
+ *
+ */
 public class RegistrationNumbersWithColorValidator implements CommandValidator {
 
 	@Override

@@ -5,6 +5,12 @@ import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
+/**
+ * Validator for "create_parking_lot"
+ * 
+ * @author sidonepudi
+ *
+ */
 public class CreateParkinglotValidator implements CommandValidator {
 
 	@Override

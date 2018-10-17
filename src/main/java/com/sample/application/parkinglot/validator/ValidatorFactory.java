@@ -8,10 +8,37 @@ import java.util.StringTokenizer;
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
 /**
+ * Factory of input validators
+ * 
  * @author sidonepudi
  *
  */
-public class CommandValidatorFactory {
+public class ValidatorFactory {
+	private static ValidatorFactory factory;
+
+	private ValidatorFactory() {
+
+	}
+
+	/**
+	 * Returns the singleton instance
+	 * 
+	 * @return
+	 */
+	public static ValidatorFactory getCommandValidatorFactory() {
+		if (factory == null) {
+			factory = new ValidatorFactory();
+		}
+		return factory;
+	}
+
+	/**
+	 * Returns the appropriate validator the given command
+	 * 
+	 * @param input
+	 * @return
+	 * @throws InvalidInputException
+	 */
 	public CommandValidator getValidator(String input) throws InvalidInputException {
 
 		if (CommandValidatorPredicates.EMPTY_CHECK.test(input)) {
@@ -28,7 +55,7 @@ public class CommandValidatorFactory {
 			return new ParkValidator();
 		}
 
-		if (CommandValidatorPredicates.LEAVE_CHECK.test(command)) {	
+		if (CommandValidatorPredicates.LEAVE_CHECK.test(command)) {
 			return new LeaveValidator();
 		}
 
@@ -43,7 +70,7 @@ public class CommandValidatorFactory {
 		if (CommandValidatorPredicates.SLOT_NUMBERS_WITH_COLOR_CHECK.test(command)) {
 			return new SlotNumberWithColorValidator();
 		}
-		
+
 		if (CommandValidatorPredicates.SLOT_NUMBER_FOR_REGISTRATION_NUMBER_CHECK.test(command)) {
 			return new SlotNumbersWithRegistrationNumberValidator();
 		}

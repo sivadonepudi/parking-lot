@@ -4,6 +4,12 @@ import java.util.function.Predicate;
 
 import com.sample.application.parkinglot.Commands;
 
+/**
+ * Various predicators to validate provided command
+ * 
+ * @author sidonepudi
+ *
+ */
 public class CommandValidatorPredicates {
 	public static final Predicate<String> EMPTY_CHECK = s -> s == null || s.isEmpty();
 	public static final Predicate<String> CREATE_PARKING_LOT_CHECK = s -> s

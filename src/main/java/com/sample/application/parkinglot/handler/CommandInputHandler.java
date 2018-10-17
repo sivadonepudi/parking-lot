@@ -12,7 +12,7 @@ import com.sample.application.parkinglot.entity.Vehicle;
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
 /**
- * Executes the given command
+ * Executes the given command Singleton
  * 
  * @author sidonepudi
  *
@@ -23,7 +23,8 @@ public enum CommandInputHandler implements InputHandler {
 	private static Set<Slot> parkingLot = new LinkedHashSet<Slot>();
 
 	/**
-	 * Identifies & executes the given command
+	 * Identifies & executes the given single command. It considers first word in a
+	 * line is command
 	 */
 	public void execute(String input) throws InvalidInputException {
 		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
@@ -90,10 +91,11 @@ public enum CommandInputHandler implements InputHandler {
 	 * @param input
 	 */
 	private void handleStatus(String input) {
-		// if there is at least one vehicle in parking-lot
+		// if the parking lot is created
 		if (parkingLot.size() > 0) {
-			System.out.println("Slot No." + "\t\t" + "Registration No" + "\t" + "Colour\n");
+			System.out.println("Slot No." + "\t" + "Registration No" + "\t" + "Colour");
 			parkingLot.stream().forEach(s -> {
+				// if there is at least one vehicle in parking-lot
 				if (s.getVehicle() != null) {
 					System.out.println(s.getSlotNumber() + "\t\t" + s.getVehicle().getRegistrationNumber() + "\t"
 							+ s.getVehicle().getColor());

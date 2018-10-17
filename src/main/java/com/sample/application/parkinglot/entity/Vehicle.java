@@ -4,6 +4,8 @@
 package com.sample.application.parkinglot.entity;
 
 /**
+ * POJO for Vehicle
+ * 
  * @author sidonepudi
  *
  */

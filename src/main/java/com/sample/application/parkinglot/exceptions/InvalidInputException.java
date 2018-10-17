@@ -4,6 +4,8 @@
 package com.sample.application.parkinglot.exceptions;
 
 /**
+ * Application exception
+ * 
  * @author sidonepudi
  *
  */
@@ -21,5 +23,4 @@ public class InvalidInputException extends Exception {
 	public InvalidInputException(String info) {
 		super(info);
 	}
-
 }

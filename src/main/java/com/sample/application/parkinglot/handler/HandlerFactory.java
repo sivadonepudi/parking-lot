@@ -8,26 +8,33 @@ import java.util.function.Predicate;
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
 /**
- * This factory constructs the necessary handler for a given input
+ * This factory, constructs the necessary handler for a given input
  * 
  * @author sidonepudi
  *
  */
-public class InputHandlerFactory {
+public class HandlerFactory {
 	private static final List<String> validCommands = Arrays.asList("create_parking_lot",
 			"registration_numbers_for_cars_with_colour", "slot_numbers_for_cars_with_colour",
 			"slot_number_for_registration_number", "leave", "status", "park");
+	
+	private static HandlerFactory factory;
+
+	private HandlerFactory() {
+	}
+
+	public static HandlerFactory getInputHandlerFactory() {
+		if (factory == null) {
+			factory = new HandlerFactory();
+		}
+		return factory;
+	}
 
 	public InputHandler createInputHandler(String input) throws InvalidInputException {
-		// handing empty input
-		if (input == null || input.length() < 1) {
-			throw new InvalidInputException("Invalid input: " + input);
-		}
 
 		// if the input is ending with .txt, considering it as file input
 		if (input.endsWith(".txt")) {
 			return FileInputHandler.INSTANCE;
-
 		}
 
 		Predicate<String> commandValidator = (s) -> validCommands.contains(s);
@@ -35,7 +42,7 @@ public class InputHandlerFactory {
 
 		// picking the first word from the given line
 		String cmd = inputTokenizer.nextToken();
-		// if is the the operation is supported
+		// if the the operation is supported
 		if (commandValidator.test(cmd)) {
 			return CommandInputHandler.INSTANCE;
 		}

@@ -4,6 +4,9 @@
 package com.sample.application.parkinglot.entity;
 
 /**
+ * POJO for parking lot slot. It has unique id (slotNumber) & can let 0 or 1
+ * vehicle parking
+ * 
  * @author sidonepudi
  *
  */
