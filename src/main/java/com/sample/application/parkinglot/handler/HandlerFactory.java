@@ -33,7 +33,7 @@ public class HandlerFactory {
 			return FileInputHandler.INSTANCE;
 		}
 
-		Predicate<String> commandValidator = (s) -> Command.getCommands().contains(s);
+		Predicate<String> commandValidator = (s) -> Command.getSupportedOperations().contains(s);
 		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
 
 		// picking the first word from the given line

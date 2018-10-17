@@ -29,33 +29,29 @@ public enum CommandHandler implements InputHandler {
 	public void execute(String input) throws InvalidInputException {
 		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
 		String command = inputTokenizer.nextToken();
-		if (command.equalsIgnoreCase(Command.CRAEATE_PARKING_LOT.getValue())) {
-			handleCreate(input);
-			return;
-		}
-		if (command.equalsIgnoreCase(Command.PARK.getValue())) {
+		Command cmd = Command.getCommand(command);
+		switch (cmd) {
+		case CRAEATE_PARKING_LOT:
+			handleCreateParkinglot(input);
+			break;
+		case PARK:
 			handlePark(input);
-			return;
-		}
-		if (command.equalsIgnoreCase(Command.LEAVE.getValue())) {
+			break;
+		case LEAVE:
 			handleLeave(input);
-			return;
-		}
-		if (command.equalsIgnoreCase(Command.STATUS.getValue())) {
+			break;
+		case STATUS:
 			handleStatus(input);
-			return;
-		}
-		if (command.equalsIgnoreCase(Command.REGISTRATION_NUMBERS_WITH_COLOR.getValue())) {
+			break;
+		case REGISTRATION_NUMBERS_WITH_COLOR:
 			handleRegistrationNumbersWithColor(input);
-			return;
-		}
-		if (command.equalsIgnoreCase(Command.SLOT_NUMBERS_WITH_COLOR.getValue())) {
+			break;
+		case SLOT_NUMBERS_WITH_COLOR:
 			handleSlotNumbersWithColor(input);
-			return;
-		}
-		if (command.equalsIgnoreCase(Command.SLOT_NUMBER_FOR_REGISTRATION_NUMBER.getValue())) {
+			break;
+		case SLOT_NUMBER_FOR_REGISTRATION_NUMBER:
 			handleSlotNumberForRegistrationNumber(input);
-			return;
+			break;
 		}
 
 	}
@@ -190,7 +186,7 @@ public enum CommandHandler implements InputHandler {
 	 * @param input
 	 * @throws InvalidInputException
 	 */
-	private void handleCreate(String input) throws InvalidInputException {
+	private void handleCreateParkinglot(String input) throws InvalidInputException {
 		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
 		String command = inputTokenizer.nextToken();
 		int noOfSlots = Integer.parseInt(inputTokenizer.nextToken());

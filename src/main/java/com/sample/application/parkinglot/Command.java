@@ -4,8 +4,11 @@
 package com.sample.application.parkinglot;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
 /**
  * Commands supported by parking lot application
@@ -34,10 +37,19 @@ public enum Command {
 		return value;
 	}
 
-	public static List<String> getCommands() {
+	public static List<String> getSupportedOperations() {
 		if (commands == null) {
 			commands = Stream.of(Command.values()).map(c -> c.getValue()).collect(Collectors.toList());
 		}
 		return commands;
+	}
+
+	public static Command getCommand(String value) throws InvalidInputException {
+		Optional<Command> command = Stream.of(Command.values()).filter(c -> c.getValue().equalsIgnoreCase(value))
+				.findFirst();
+		if (command.isPresent()) {
+			return command.get();
+		}
+		throw new InvalidInputException(value + ", operation is not supproted.");
 	}
 }

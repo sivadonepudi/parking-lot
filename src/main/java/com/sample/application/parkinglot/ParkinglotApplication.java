@@ -32,14 +32,13 @@ public class ParkinglotApplication {
 		System.out.print("Enter the input:");
 		Scanner inputScanner = new Scanner(System.in);
 		String input = inputScanner.nextLine();
-		HandlerFactory factory = HandlerFactory.getInstance();
-		ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
+		InputHandler handler;
 
 		// as long as there is NO exit command
 		while (!exitCommands.contains(input)) {
 			try {
-				validatorFactory.getValidator(input).validate(input);
-				InputHandler handler = factory.createInputHandler(input);
+				ValidatorFactory.getInstance().getValidator(input).validate(input);
+				handler = HandlerFactory.getInstance().createInputHandler(input);
 				handler.execute(input);
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
