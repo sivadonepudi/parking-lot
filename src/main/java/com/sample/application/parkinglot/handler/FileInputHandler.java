@@ -10,7 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
-import com.sample.application.parkinglot.validator.ValidatorFactory;
 
 public enum FileInputHandler implements InputHandler {
 	INSTANCE;
@@ -18,18 +17,11 @@ public enum FileInputHandler implements InputHandler {
 	 * Identifies & executes all the commands specified in a given file input
 	 */
 	public void execute(String fileName) throws InvalidInputException {
-		HandlerFactory factory = HandlerFactory.getInstance();
-		ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 			String line = "";
 			while ((line = br.readLine()) != null) {
-				// avoid cyclic
-				if (line.endsWith(".txt")) {
-					throw new InvalidInputException("Invalid content found in input file");
-				}
 				try {
-					validatorFactory.getValidator(line).validate(line);
-					factory.createInputHandler(line).execute(line);
+					HandlerFactory.getInstance().createInputHandler(line).execute(line);
 				} catch (InvalidInputException e) {
 					System.out.println(e.getMessage());
 				}
