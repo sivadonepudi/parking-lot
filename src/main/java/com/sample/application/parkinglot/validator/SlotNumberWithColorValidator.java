@@ -12,13 +12,13 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
  * @author sidonepudi
  *
  */
-public class SlotNumberWithColorValidator implements CommandValidator {
+public class SlotNumberWithColorValidator extends BaseValidator implements CommandValidator {
 
 	@Override
 	public void validate(String input) throws InvalidInputException {
 		try {
 			StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
-			assert (inputTokenizer.countTokens() == 2);
+			super.verifySyntax(2, inputTokenizer.countTokens());
 			String command = inputTokenizer.nextToken();
 			String color = inputTokenizer.nextToken();
 

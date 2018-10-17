@@ -11,14 +11,14 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
  * @author sidonepudi
  *
  */
-public class LeaveValidator implements CommandValidator {
+public class LeaveValidator extends BaseValidator implements CommandValidator {
 
 	@Override
 	public void validate(String input) throws InvalidInputException {
 		String slotNumber = "";
 		try {
 			StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
-			assert (inputTokenizer.countTokens() == 2);
+			super.verifySyntax(2, inputTokenizer.countTokens());
 			String command = inputTokenizer.nextToken();
 			slotNumber = inputTokenizer.nextToken();
 

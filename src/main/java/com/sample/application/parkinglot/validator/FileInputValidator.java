@@ -11,14 +11,12 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
  * @author sidonepudi
  *
  */
-public class FileInputValidator implements CommandValidator {
+public class FileInputValidator extends BaseValidator implements CommandValidator {
 
 	@Override
 	public void validate(String input) throws InvalidInputException {
-		// file should contain atleast one
-		// all commmands should be valid
 		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
-		assert (inputTokenizer.countTokens() == 1);
+		super.verifySyntax(1, inputTokenizer.countTokens());
 		if (new File(input).isDirectory()) {
 			throw new InvalidInputException(input + "is a directory");
 		}

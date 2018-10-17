@@ -11,13 +11,13 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
  * @author sidonepudi
  *
  */
-public class StatusValidator implements CommandValidator {
+public class StatusValidator extends BaseValidator implements CommandValidator {
 
 	@Override
 	public void validate(String input) throws InvalidInputException {
 		try {
 			StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
-			assert (inputTokenizer.countTokens() == 1);
+			super.verifySyntax(1, inputTokenizer.countTokens());
 			String command = inputTokenizer.nextToken();
 
 		} catch (NoSuchElementException e) {
