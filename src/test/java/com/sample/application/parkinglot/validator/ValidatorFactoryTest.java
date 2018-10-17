@@ -17,7 +17,7 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
 public class ValidatorFactoryTest {
 	@Test
 	public void testGetValidator() {
-		ValidatorFactory factory = ValidatorFactory.getValidatorFactory();
+		ValidatorFactory factory = ValidatorFactory.getInstance();
 		Assert.assertNotNull(factory);
 		try {
 			Assert.assertEquals(CreateParkinglotValidator.class,

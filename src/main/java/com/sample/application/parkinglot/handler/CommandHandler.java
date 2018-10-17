@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
-import com.sample.application.parkinglot.Commands;
+import com.sample.application.parkinglot.Command;
 import com.sample.application.parkinglot.entity.Slot;
 import com.sample.application.parkinglot.entity.Vehicle;
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
@@ -29,31 +29,31 @@ public enum CommandHandler implements InputHandler {
 	public void execute(String input) throws InvalidInputException {
 		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
 		String command = inputTokenizer.nextToken();
-		if (command.equalsIgnoreCase(Commands.CRAEATE_PARKING_LOT.getValue())) {
+		if (command.equalsIgnoreCase(Command.CRAEATE_PARKING_LOT.getValue())) {
 			handleCreate(input);
 			return;
 		}
-		if (command.equalsIgnoreCase(Commands.PARK.getValue())) {
+		if (command.equalsIgnoreCase(Command.PARK.getValue())) {
 			handlePark(input);
 			return;
 		}
-		if (command.equalsIgnoreCase(Commands.LEAVE.getValue())) {
+		if (command.equalsIgnoreCase(Command.LEAVE.getValue())) {
 			handleLeave(input);
 			return;
 		}
-		if (command.equalsIgnoreCase(Commands.STATUS.getValue())) {
+		if (command.equalsIgnoreCase(Command.STATUS.getValue())) {
 			handleStatus(input);
 			return;
 		}
-		if (command.equalsIgnoreCase(Commands.REGISTRATION_NUMBERS_WITH_COLOR.getValue())) {
+		if (command.equalsIgnoreCase(Command.REGISTRATION_NUMBERS_WITH_COLOR.getValue())) {
 			handleRegistrationNumbersWithColor(input);
 			return;
 		}
-		if (command.equalsIgnoreCase(Commands.SLOT_NUMBERS_WITH_COLOR.getValue())) {
+		if (command.equalsIgnoreCase(Command.SLOT_NUMBERS_WITH_COLOR.getValue())) {
 			handleSlotNumbersWithColor(input);
 			return;
 		}
-		if (command.equalsIgnoreCase(Commands.SLOT_NUMBER_FOR_REGISTRATION_NUMBER.getValue())) {
+		if (command.equalsIgnoreCase(Command.SLOT_NUMBER_FOR_REGISTRATION_NUMBER.getValue())) {
 			handleSlotNumberForRegistrationNumber(input);
 			return;
 		}

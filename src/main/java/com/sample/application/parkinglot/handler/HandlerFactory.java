@@ -1,10 +1,9 @@
 package com.sample.application.parkinglot.handler;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 import java.util.function.Predicate;
 
+import com.sample.application.parkinglot.Command;
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 
 /**
@@ -14,16 +13,13 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
  *
  */
 public class HandlerFactory {
-	private static final List<String> validCommands = Arrays.asList("create_parking_lot",
-			"registration_numbers_for_cars_with_colour", "slot_numbers_for_cars_with_colour",
-			"slot_number_for_registration_number", "leave", "status", "park");
-	
+
 	private static HandlerFactory factory;
 
 	private HandlerFactory() {
 	}
 
-	public static HandlerFactory getInputHandlerFactory() {
+	public static HandlerFactory getInstance() {
 		if (factory == null) {
 			factory = new HandlerFactory();
 		}
@@ -37,7 +33,7 @@ public class HandlerFactory {
 			return FileInputHandler.INSTANCE;
 		}
 
-		Predicate<String> commandValidator = (s) -> validCommands.contains(s);
+		Predicate<String> commandValidator = (s) -> Command.getCommands().contains(s);
 		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
 
 		// picking the first word from the given line

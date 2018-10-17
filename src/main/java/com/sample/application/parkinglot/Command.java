@@ -3,6 +3,8 @@
  */
 package com.sample.application.parkinglot;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -11,7 +13,7 @@ import java.util.stream.Stream;
  * @author sidonepudi
  *
  */
-public enum Commands {
+public enum Command {
 	CRAEATE_PARKING_LOT("create_parking_lot"),
 	REGISTRATION_NUMBERS_WITH_COLOR("registration_numbers_for_cars_with_colour"),
 	SLOT_NUMBERS_WITH_COLOR("slot_numbers_for_cars_with_colour"),
@@ -22,7 +24,9 @@ public enum Commands {
 
 	private String value;
 
-	private Commands(String value) {
+	private static List<String> commands;
+
+	private Command(String value) {
 		this.value = value;
 	}
 
@@ -30,7 +34,10 @@ public enum Commands {
 		return value;
 	}
 
-	public static Stream<Commands> stream() {
-		return Stream.of(Commands.values());
+	public static List<String> getCommands() {
+		if (commands == null) {
+			commands = Stream.of(Command.values()).map(c -> c.getValue()).collect(Collectors.toList());
+		}
+		return commands;
 	}
 }

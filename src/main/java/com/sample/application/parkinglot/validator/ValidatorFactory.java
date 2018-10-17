@@ -25,7 +25,7 @@ public class ValidatorFactory {
 	 * 
 	 * @return
 	 */
-	public static ValidatorFactory getValidatorFactory() {
+	public static ValidatorFactory getInstance() {
 		if (factory == null) {
 			factory = new ValidatorFactory();
 		}
