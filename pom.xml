@@ -7,11 +7,16 @@
 	<name>parking lot application</name>
 	<packaging>jar</packaging>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.junit>4.12</version.junit>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${version.junit}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

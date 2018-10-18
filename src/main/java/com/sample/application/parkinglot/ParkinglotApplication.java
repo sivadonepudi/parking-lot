@@ -3,6 +3,7 @@ package com.sample.application.parkinglot;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import static java.lang.System.out;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
 import com.sample.application.parkinglot.handler.InputHandler;
@@ -29,7 +30,7 @@ public class ParkinglotApplication {
 	private static final List<String> exitCommands = Arrays.asList("q", "Q", "quit", "QUIT", "exit", "EXIT");
 
 	public static void main(String[] args) {
-		System.out.print("Enter the input:");
+		out.print("Enter the input:");
 		Scanner inputScanner = new Scanner(System.in);
 		String input = inputScanner.nextLine();
 		InputHandler handler;
@@ -41,11 +42,11 @@ public class ParkinglotApplication {
 				handler = HandlerFactory.getInstance().createInputHandler(input);
 				handler.execute(input);
 			} catch (InvalidInputException e) {
-				System.out.println(e.getMessage());
+				out.println(e.getMessage());
 			}
 			input = inputScanner.nextLine();
 		}
-		System.out.println("*** Parking lot application shutdown. ***");
+		out.println("*** Parking lot application shutdown. ***");
 		inputScanner.close();
 	}
 }

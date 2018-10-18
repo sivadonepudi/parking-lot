@@ -1,5 +1,7 @@
 package com.sample.application.parkinglot.handler;
 
+import static java.lang.System.out;
+
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -75,7 +77,7 @@ public enum CommandHandler implements InputHandler {
 			String color = inputTokenizer.nextToken();
 			Vehicle vehicle = new Vehicle(registrationNumber, color);
 			empty.get().setVehicle(vehicle);
-			System.out.println("Allocated slot number: " + empty.get().getSlotNumber());
+			out.println("Allocated slot number: " + empty.get().getSlotNumber());
 		} else {
 			throw new InvalidInputException("Sorry, parking lot is full");
 		}
@@ -89,7 +91,7 @@ public enum CommandHandler implements InputHandler {
 	private void handleStatus(String input) {
 		// if the parking lot is created
 		if (parkingLot.size() > 0) {
-			System.out.println("Slot No." + "\t" + "Registration No" + "\t" + "Colour");
+			out.println("Slot No." + "\t" + "Registration No" + "\t" + "Colour");
 			parkingLot.stream().forEach(s -> {
 				// if there is at least one vehicle in parking-lot
 				if (s.getVehicle() != null) {
@@ -118,7 +120,7 @@ public enum CommandHandler implements InputHandler {
 		if (slotNumbers.length() > 1) {
 			slotNumbers.deleteCharAt(slotNumbers.lastIndexOf(","));
 		}
-		System.out.println(slotNumbers);
+		out.println(slotNumbers);
 	}
 
 	/**
@@ -134,9 +136,9 @@ public enum CommandHandler implements InputHandler {
 				.filter(s -> s.getVehicle().getRegistrationNumber().equalsIgnoreCase(registrationNumber)).findFirst();
 
 		if (slot.isPresent()) {
-			System.out.println(slot.get().getSlotNumber());
+			out.println(slot.get().getSlotNumber());
 		} else {
-			System.out.println("Not found");
+			out.println("Not found");
 		}
 
 	}
@@ -159,7 +161,7 @@ public enum CommandHandler implements InputHandler {
 		if (registrationNumbers.length() > 1) {
 			registrationNumbers.deleteCharAt(registrationNumbers.lastIndexOf(","));
 		}
-		System.out.println(registrationNumbers);
+		out.println(registrationNumbers);
 	}
 
 	/**
@@ -177,7 +179,7 @@ public enum CommandHandler implements InputHandler {
 		}
 		parkingLot.stream().filter((s) -> s.getSlotNumber() == slotNumber).collect(Collectors.toList()).get(0)
 				.setVehicle(null);
-		System.out.println("Slot number " + slotNumber + " is free");
+		out.println("Slot number " + slotNumber + " is free");
 	}
 
 	/**
@@ -194,7 +196,8 @@ public enum CommandHandler implements InputHandler {
 		for (int i = 1; i <= noOfSlots; i++) {
 			parkingLot.add(new Slot(i, null));
 		}
-		System.out.println("Created a parking lot with " + noOfSlots + " slots");
+		out.println("Created a parking lot with " + noOfSlots + " slots");
+
 	}
 
 }

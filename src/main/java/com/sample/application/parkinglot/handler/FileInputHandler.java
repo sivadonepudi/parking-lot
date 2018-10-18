@@ -1,5 +1,7 @@
 package com.sample.application.parkinglot.handler;
 
+import static java.lang.System.out;
+
 /**
  * Can execute the set of commands in file
  * Singleton
@@ -23,7 +25,7 @@ public enum FileInputHandler implements InputHandler {
 				try {
 					HandlerFactory.getInstance().createInputHandler(line).execute(line);
 				} catch (InvalidInputException e) {
-					System.out.println(e.getMessage());
+					out.println(e.getMessage());
 				}
 			}
 		} catch (FileNotFoundException e) {

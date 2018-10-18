@@ -33,7 +33,7 @@ public class FileInputValidator extends BaseValidator implements CommandValidato
 			while ((line = br.readLine()) != null) {
 				// avoid cyclic
 				if (line.endsWith(".txt")) {
-					throw new InvalidInputException("Invalid content found in input file");
+					throw new InvalidInputException(line+" is an invalid content present in "+input);
 				}
 				ValidatorFactory.getInstance().getValidator(line).validate(line);
 			}
