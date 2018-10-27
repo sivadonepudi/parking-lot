@@ -33,7 +33,7 @@ public class FileInputValidator extends BaseValidator {
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				// avoid cyclic
-				if (line.endsWith(".txt")) {
+				if (line.endsWith(".txt") || line.endsWith(".TXT")) {
 					throw new InvalidInputException(line + " is an invalid content present in " + input);
 				}
 				ValidatorFactory.getInstance().getValidator(line).validate(line);
