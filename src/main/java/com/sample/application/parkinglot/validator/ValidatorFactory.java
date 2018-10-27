@@ -6,6 +6,7 @@ package com.sample.application.parkinglot.validator;
 import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
+import com.sample.application.parkinglot.handler.ParkinglotUtils;
 
 /**
  * Factory of input validators
@@ -44,7 +45,7 @@ public class ValidatorFactory {
 		if (Predicates.EMPTY_CHECK.test(input)) {
 			throw new InvalidInputException("empty input");
 		}
-		StringTokenizer tokenizer = new StringTokenizer(input, " ");
+		StringTokenizer tokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		String command = tokenizer.nextToken();
 
 		if (Predicates.CREATE_PARKING_LOT_CHECK.test(command)) {

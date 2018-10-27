@@ -29,7 +29,7 @@ public enum CommandHandler implements InputHandler {
 	 * line is command
 	 */
 	public void execute(String input) throws InvalidInputException {
-		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+		StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		String command = inputTokenizer.nextToken();
 		Command cmd = Command.getCommand(command);
 		switch (cmd) {
@@ -71,7 +71,7 @@ public enum CommandHandler implements InputHandler {
 		Optional<Slot> empty = parkingLot.stream().filter((slot) -> (slot.getVehicle() == null)).findFirst();
 		if (empty.isPresent()) {
 
-			StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+			StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 			String command = inputTokenizer.nextToken();
 			String registrationNumber = inputTokenizer.nextToken();
 			String color = inputTokenizer.nextToken();
@@ -108,7 +108,7 @@ public enum CommandHandler implements InputHandler {
 	 * @param input
 	 */
 	private void handleSlotNumbersWithColor(String input) {
-		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+		StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		String command = inputTokenizer.nextToken();
 		String color = inputTokenizer.nextToken();
 		StringBuilder slotNumbers = new StringBuilder();

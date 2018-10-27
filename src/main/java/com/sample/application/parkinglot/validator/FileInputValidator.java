@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
+import com.sample.application.parkinglot.handler.ParkinglotUtils;
 
 /**
  * Validator file based commands
@@ -15,11 +16,11 @@ import com.sample.application.parkinglot.exceptions.InvalidInputException;
  * @author sidonepudi
  *
  */
-public class FileInputValidator extends BaseValidator implements CommandValidator {
+public class FileInputValidator extends BaseValidator {
 
 	@Override
 	public void validate(String input) throws InvalidInputException {
-		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+		StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		super.verifySyntax(1, inputTokenizer.countTokens());
 		if (new File(input).isDirectory()) {
 			throw new InvalidInputException(input + "is a directory");
@@ -33,7 +34,7 @@ public class FileInputValidator extends BaseValidator implements CommandValidato
 			while ((line = br.readLine()) != null) {
 				// avoid cyclic
 				if (line.endsWith(".txt")) {
-					throw new InvalidInputException(line+" is an invalid content present in "+input);
+					throw new InvalidInputException(line + " is an invalid content present in " + input);
 				}
 				ValidatorFactory.getInstance().getValidator(line).validate(line);
 			}
