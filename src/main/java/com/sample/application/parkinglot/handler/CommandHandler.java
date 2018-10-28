@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.sample.application.parkinglot.Command;
 import com.sample.application.parkinglot.entity.Slot;
@@ -193,9 +194,9 @@ public enum CommandHandler implements InputHandler {
 		String command = inputTokenizer.nextToken();
 		int noOfSlots = Integer.parseInt(inputTokenizer.nextToken());
 		parkingLot.clear();
-		for (int i = 1; i <= noOfSlots; i++) {
-			parkingLot.add(new Slot(i, null));
-		}
+
+		IntStream.range(1, noOfSlots + 1).forEach(i -> parkingLot.add(new Slot(i, null)));
+
 		out.println("Created a parking lot with " + noOfSlots + " slots");
 
 	}
