@@ -129,7 +129,7 @@ public enum CommandHandler implements InputHandler {
 	 * @param input
 	 */
 	private void handleSlotNumberForRegistrationNumber(String input) {
-		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+		StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		String command = inputTokenizer.nextToken();
 		String registrationNumber = inputTokenizer.nextToken();
 		Optional<Slot> slot = parkingLot.stream()
@@ -149,7 +149,7 @@ public enum CommandHandler implements InputHandler {
 	 * @param input
 	 */
 	private void handleRegistrationNumbersWithColor(String input) {
-		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+		StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		String command = inputTokenizer.nextToken();
 		String color = inputTokenizer.nextToken();
 		StringBuilder registrationNumbers = new StringBuilder();
@@ -171,7 +171,7 @@ public enum CommandHandler implements InputHandler {
 	 * @throws InvalidInputException
 	 */
 	private void handleLeave(String input) throws InvalidInputException {
-		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+		StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		String command = inputTokenizer.nextToken();
 		int slotNumber = Integer.parseInt(inputTokenizer.nextToken());
 		if (slotNumber > parkingLot.size()) {
@@ -189,7 +189,7 @@ public enum CommandHandler implements InputHandler {
 	 * @throws InvalidInputException
 	 */
 	private void handleCreateParkinglot(String input) throws InvalidInputException {
-		StringTokenizer inputTokenizer = new StringTokenizer(input, " ");
+		StringTokenizer inputTokenizer = new StringTokenizer(input, ParkinglotUtils.DELIMITER);
 		String command = inputTokenizer.nextToken();
 		int noOfSlots = Integer.parseInt(inputTokenizer.nextToken());
 		parkingLot.clear();
