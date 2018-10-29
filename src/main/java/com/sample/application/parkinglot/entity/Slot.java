@@ -13,10 +13,9 @@ package com.sample.application.parkinglot.entity;
 public class Slot {
 	private int slotNumber;
 	private Vehicle vehicle;
-
-	public Slot(int soltNumber, Vehicle vehicle) {
+	
+	public Slot(int soltNumber) {
 		this.slotNumber = soltNumber;
-		this.vehicle = vehicle;
 	}
 
 	public int getSlotNumber() {

@@ -195,7 +195,7 @@ public enum CommandHandler implements InputHandler {
 		int noOfSlots = Integer.parseInt(inputTokenizer.nextToken());
 		parkingLot.clear();
 
-		IntStream.range(1, noOfSlots + 1).forEach(i -> parkingLot.add(new Slot(i, null)));
+		IntStream.range(1, noOfSlots + 1).forEach(i -> parkingLot.add(new Slot(i)));
 
 		out.println("Created a parking lot with " + noOfSlots + " slots");
 
