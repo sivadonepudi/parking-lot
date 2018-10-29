@@ -1,12 +1,12 @@
 package com.sample.application.parkinglot;
 
+import static java.lang.System.out;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import static java.lang.System.out;
 
 import com.sample.application.parkinglot.exceptions.InvalidInputException;
-import com.sample.application.parkinglot.handler.InputHandler;
 import com.sample.application.parkinglot.handler.HandlerFactory;
 import com.sample.application.parkinglot.validator.ValidatorFactory;
 
@@ -29,18 +29,26 @@ import com.sample.application.parkinglot.validator.ValidatorFactory;
 public class ParkinglotApplication {
 	private static final List<String> exitCommands = Arrays.asList("q", "Q", "quit", "QUIT", "exit", "EXIT");
 
+	public void execute(String input) throws InvalidInputException {
+		ValidatorFactory.getInstance().getValidator(input).validate(input);
+		HandlerFactory.getInstance().createInputHandler(input).execute(input);
+	}
+
 	public static void main(String[] args) {
 		out.print("Enter the input:");
 		Scanner inputScanner = new Scanner(System.in);
-		String input = inputScanner.nextLine();
-		InputHandler handler;
+		String input = "";
+		if (args != null && args.length == 1) {
+			input = args[0];
+		} else {
+			input = inputScanner.nextLine();
+		}
+		ParkinglotApplication mySelf = new ParkinglotApplication();
 
 		// as long as there is NO exit command
 		while (!exitCommands.contains(input)) {
 			try {
-				ValidatorFactory.getInstance().getValidator(input).validate(input);
-				handler = HandlerFactory.getInstance().createInputHandler(input);
-				handler.execute(input);
+				mySelf.execute(input);
 			} catch (InvalidInputException e) {
 				out.println(e.getMessage());
 			}
